@@ -1,2 +1,14 @@
-markdown: redcarpet
-exclude: ['README.md']
+# Site settings
+title:       Machine learning blog
+author:      Sivaramakrishnan Sankarapandian
+description: ":rocket: Blog for spreading knowledge about machine learning"
+baseurl:     "" 
+url:         "http://scelesticsiva.github.io" 
+
+# Social Links
+email:            scelesticsiva@gmail.com
+github_username:  scelesticsiva
+
+# Build settings
+markdown: kramdown
+permalink: pretty

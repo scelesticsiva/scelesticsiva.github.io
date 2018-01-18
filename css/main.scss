@@ -1,0 +1,23 @@
+---
+# Import partials from `_sass`
+---
+@charset "utf-8";
+
+// theme variables go first
+@import 'themes/default';
+
+@import 'reset';
+
+@import 'mixins';
+@import 'type';
+@import 'base';
+
+@import 'header';
+@import 'footer';
+
+@import 'page';
+@import 'post';
+@import 'syntax-highlighting';
+
+// media queries
+@import 'media';
