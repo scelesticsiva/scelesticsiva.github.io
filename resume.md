@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: null
 title: Resume
+link: /assets/sivaramakrishanan_resume_nov.pdf
 permalink: /resume/
 ---
 
-This will be the place where my resume goes
