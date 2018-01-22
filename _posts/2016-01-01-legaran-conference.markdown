@@ -1,5 +1,6 @@
 ---
 layout: post
+comments: true
 title:  "Legaran Conference"
 date:   2016-01-01 13:28:59 -0500
 ---
