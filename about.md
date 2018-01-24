@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: page_about
 title: About
 permalink: /about/
 ---
 
-This will be blog to post all things related to machine learning
+I am currently a Masters student at Boston University doing my research on scalable non-parametric version of Bayesian Neural Networks
