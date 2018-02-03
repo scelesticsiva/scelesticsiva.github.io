@@ -1,7 +1,7 @@
 ---
 layout: null
 title: Resume
-link: /assets/sivaramakrishanan_resume_nov.pdf
+link: /assets/sivaramakrishnan_resume_nlp.pdf
 permalink: /resume/
 ---
 

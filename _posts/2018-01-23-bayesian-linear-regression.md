@@ -4,6 +4,7 @@ comments: true
 title:  "Bayesian Linear Regression"
 date:   2018-01-23 08:07:00 -0500
 use_math: true
+type: post
 ---
 
 We all must have learnt about Linear regression, but what is Bayesian Linear Regression? It is just `Bayesian` treatment of linear regression, what do I mean by that? We consider the weights in linear regression as random variables. Now, why on earth would we do that?

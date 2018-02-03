@@ -5,6 +5,7 @@ title:  "Stop gradients in Tensorflow"
 date:   2018-01-22 12:19:59 -0500
 excerpt: stopping gradients in tensorflow using tf.stop_gradient
 keywords: tensorflow,stop,gradients,neural networks
+type: post
 ---
 This blog post is on how to use `tf.stop_gradient` to restrict the flow of gradients through certain parts of the network
 

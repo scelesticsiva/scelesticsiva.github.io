@@ -1,0 +1,17 @@
+---
+layout: default
+---
+<div class="home">
+  <ul class="post-list">
+    {% for post in site.posts %}
+      {% if post.type == "project" %}
+      <li>
+        <h1>
+          <a class="post-link" href="{{ site.url }}{{ post.link }}">{{ post.title }}</a>
+        </h1>
+        <span class="post-project">{{ post.description }}</span>
+      </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
