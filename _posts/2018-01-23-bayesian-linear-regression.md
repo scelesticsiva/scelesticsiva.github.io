@@ -17,5 +17,74 @@ Secondly, when you have some prior knowledge of weights [in most cases you won't
 
 Finally, while making predictions you are not considering a single values[s] of weights[s], but a distribution of weight[s]. You will be averaging over all the decisions that correspond to different weights weighted by their probability of occuring, this elimiates the problem of over-fitting to training data.
 
-Now let us first, generate some toy dataset for illustration. I will be generating 2-dimensional data from U[-1,1] and create target variables using the function $ f(\mathbf{x},\mathbf{w}) = a_0 + a_1 \mathbf{x} $ with gaussian noise with zero mean and 0.1 variance. Let us choose $ a_0 $,$ a_1 $ be 0.3,0.5 respectively.
+Now let us first, generate some toy dataset for illustration. I will be generating 2-dimensional data from U[-1,1] and create target variables using the function $ f(\mathbf{x},\mathbf{w}) = a_0 + a_1 \mathbf{x} $ with gaussian noise with zero mean and 0.2 variance. Let us choose $ a_0 $,$ a_1 $ be 0.3,0.5 respectively.
 
+{% highlight python %}
+a_0 = -0.3
+a_1 = 0.5
+beta_inverse = 0.2
+data = np.random.uniform(-1,1,size = [100,1])
+target = (a_0 + a_1 * data) + np.random.normal(loc = 0,scale = beta_inverse,size = [100,1])
+ax = sns.regplot(x = data,y = target,fit_reg = False,color = "r")
+{% endhighlight %}
+![synthetic_dataset](/assets/synthetic_datapoints.png){:class="img-responsive"}
+
+We need to develop a distribution in the weights space, such that any sample from that distribution reduces the error between data and targets. We can do that by first defining prior and likelihood distributions.
+
+The prior distribution is the distribution of the weights before seeing the data. The likelihood is the distribution of the targets given the data and weights. Let us define prior distribution to be isotropic Gaussian of the form,
+$$ p( \mathbf{w}) = \mathcal{N}(\mathbf{w} \| 0,\alpha^{-1} I) $$
+
+Let the likelihood be of the form $ p(\mathbf{t} \| \mathbf{x} , \mathbf{w}) = \prod_{i=1}^{N} \mathcal{N}(t_i \| \mathbf{w}^T x_n,\beta^-1) $. The posterior distrbution of the weights can be written as, $p(\mathbf{w} \| \mathbf{t}) \propto p(\mathbf{t} \| \mathbf{x} , \mathbf{w}) p( \mathbf{w}) $
+
+Since both the prior and likelihood have the same gaussian distribution, the posterior is also of the form gaussian distribution and the parameters of it can be derived in closed form,[from "Pattern Recognition and Machine Learnin - C.Bishop"]
+
+$$ \mathbf{m_n} = \mathbf{S_N}(\mathbf{S_0}^{-1}\mathbf{m_0} + \beta \Phi^T \mathbf{t}) $$ 
+
+$$ \mathbf{S_N^{-1}} = \mathbf{S_0^{-1}} + \beta \Phi^T\Phi $$
+
+If the prior is of the form $ \mathcal{N}(\mathbf{w} \| 0,\alpha^{-1} I) $ then the above two equations reduces to,
+
+$$ \mathbf{m_n} = \beta \mathbf{S_N}^{-1} \Phi^T \mathbf{t} $$ 
+
+$$ \mathbf{S_N^{-1}} = \alpha I + \beta \Phi^T\Phi $$
+
+Now we plugin datapoint one by one into $\Phi$ and compute the mean and covariance of the posterior distribution of weights, once enough datapoints are given, the posterior distribution becomes super confident converging to a point in two dimensional space.
+
+{% highlight python %}
+sns.set_style("whitegrid")
+for i in range(len(data)):
+    if i == 0:
+        si = np.array([[1],[data[i]]])
+        sN_inverse = (1/alpha_inverse)*np.eye(2) + (1/beta_inverse)*(si@si.T)
+        mN = (1/beta_inverse)*((np.linalg.inv(sN_inverse))@(si@target[i]))
+        w_posterior = np.random.multivariate_normal(mN,(np.linalg.inv(sN_inverse)),size = (1000))
+        kd = sns.kdeplot(w_posterior[:,0],w_posterior[:,1],shade = False)
+        kd.axes.set_ylim(-2,2)
+        kd.axes.set_xlim(-1.5,1.5)
+        sns.plt.show()
+    else:
+        s0_inverse = copy.deepcopy(sN_inverse)
+        m0 = copy.deepcopy(mN)
+        si = np.array([[1],[data[i]]])
+        sN_inverse = s0_inverse + (1/beta_inverse)*(si@si.T)
+        mN = np.linalg.inv(sN_inverse)@((s0_inverse@m0) + ((1/beta_inverse)*(si@target[i])))
+        w_posterior = np.random.multivariate_normal(mN,(np.linalg.inv(sN_inverse)),size = (1000))
+        kd = sns.kdeplot(w_posterior[:,0],w_posterior[:,1],shade = False)
+        kd.axes.set_ylim(-2,2)
+        kd.axes.set_xlim(-1.5,1.5)
+        sns.plt.show()
+{% endhighlight %}
+
+For true Bayesian treatment, we should have hyper prior over the parameters $ \alpha, \beta $ but we will consider these values to be known in this example.
+
+Firstly, the prior distribution looks like this,
+![prior_distribution](/assets/prior.png){:class="img-responsive"}
+After a single datapoint, the posterior distribution of the weights looks like this,
+![after_single_datapoint](/assets/after_0.png){:class="img-responsive"}
+After 5 datapoints,
+![after_five_datapoints](/assets/after_5.png){:class="img-responsive"}
+After 20 datapoints,
+![after_twenty_datapoints](/assets/after_20.png){:class="img-responsive"}
+After 50 datapoints,
+![after_fifty_datapoints](/assets/after_50.png){:class="img-responsive"}
+As you can see as the number of data points increases, the distribution becomes narrower [i.e confidence in values of weights increases] and converging to the true values of [-0.3,0.5]
