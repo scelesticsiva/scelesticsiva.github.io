@@ -51,6 +51,7 @@ $$ \mathbf{S_N^{-1}} = \alpha I + \beta \Phi^T\Phi $$
 Now we plugin datapoint one by one into $\Phi$ and compute the mean and covariance of the posterior distribution of weights, once enough datapoints are given, the posterior distribution becomes super confident converging to a point in two dimensional space.
 
 {% highlight python %}
+alpha_inverse = 0.5
 sns.set_style("whitegrid")
 for i in range(len(data)):
     if i == 0:
@@ -61,6 +62,16 @@ for i in range(len(data)):
         kd = sns.kdeplot(w_posterior[:,0],w_posterior[:,1],shade = False)
         kd.axes.set_ylim(-2,2)
         kd.axes.set_xlim(-1.5,1.5)
+        plt.savefig("after_{0}.png".format(i))
+        sns.plt.show()
+        samples_w_prior = np.random.multivariate_normal(mN,(np.linalg.inv(sN_inverse)),size = (5))
+        fig,ax = plt.subplots()
+        sns.regplot(x = data[i],y = target[i],fit_reg = False,color = "r")
+        ax.set_xlim(-1.5,1.5)
+        ax.set_ylim(-1.5,1.5)
+        for w in samples_w_prior:
+            prediction = w[0] + w[1]*data
+            plt.plot(data,prediction)
         sns.plt.show()
     else:
         s0_inverse = copy.deepcopy(sN_inverse)
@@ -72,6 +83,19 @@ for i in range(len(data)):
         kd = sns.kdeplot(w_posterior[:,0],w_posterior[:,1],shade = False)
         kd.axes.set_ylim(-2,2)
         kd.axes.set_xlim(-1.5,1.5)
+        if i == 5 or i == 20 or i == 50 or i == 100:
+            sns.plt.savefig("after_{0}.png".format(i))
+        sns.plt.show()
+        samples_w_prior = np.random.multivariate_normal(mN,(np.linalg.inv(sN_inverse)),size = (5))
+        fig,ax = plt.subplots()
+        ax.set_xlim(-1.5,1.5)
+        ax.set_ylim(-1.5,1.5)
+        sns.regplot(x = data[0:i],y = target[0:i],fit_reg = False,color = "r")
+        for w in samples_w_prior:
+            prediction = w[0] + w[1]*data
+            plt.plot(data,prediction)
+        if i == 5 or i == 20 or i == 50 or i == 100:
+            sns.plt.savefig("lines_after_{0}.png".format(i))
         sns.plt.show()
 {% endhighlight %}
 
@@ -81,10 +105,14 @@ Firstly, the prior distribution looks like this,
 ![prior_distribution](/assets/prior.png){:class="img-responsive"}
 After a single datapoint, the posterior distribution of the weights looks like this,
 ![after_single_datapoint](/assets/after_0.png){:class="img-responsive"}
+![after_single_datapoint](/assets/lines_after_0.png){:class="img-responsive"}
 After 5 datapoints,
 ![after_five_datapoints](/assets/after_5.png){:class="img-responsive"}
+![after_five_datapoints](/assets/lines_after_5.png){:class="img-responsive"}
 After 20 datapoints,
 ![after_twenty_datapoints](/assets/after_20.png){:class="img-responsive"}
+![after_twenty_datapoints](/assets/lines_after_20.png){:class="img-responsive"}
 After 50 datapoints,
 ![after_fifty_datapoints](/assets/after_50.png){:class="img-responsive"}
+![after_fifty_datapoints](/assets/lines_after_50.png){:class="img-responsive"}
 As you can see as the number of data points increases, the distribution becomes narrower [i.e confidence in values of weights increases] and converging to the true values of [-0.3,0.5]
