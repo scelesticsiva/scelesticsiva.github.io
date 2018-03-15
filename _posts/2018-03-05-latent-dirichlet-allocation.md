@@ -23,7 +23,7 @@ LDA is three-level hierarchial Bayesian because it models a corpus in the follow
 * Choose a topic from the chosen distribution of topics.
 * Choose a word from the conditional distribution of words given the chosen topic.
 
-The graphical dependencies are indicated in the following picture,
+![LDA_generative_process](/assets/LDA_generative_process.png){:class="img-responsive"}
 
 In case of LDA, the __distribution over distribution__ is a dirichlet distribution parameterized by $\alpha$
 [This is a [great article](http://blog.bogatron.net/blog/2014/02/02/visualizing-dirichlet-distributions/) to visualize dirichlet distribution and I will be using the code from the post here]
