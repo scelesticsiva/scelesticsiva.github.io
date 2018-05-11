@@ -7,7 +7,11 @@ layout: default
       {% if post.type == "project" %}
       <li>
         <h1>
-          <a class="post-link" href="{{ site.url }}{{ post.link }}">{{ post.title }}</a>
+          {% if post.git-link == null %}
+            <a class="post-link" href="{{ site.url }}{{ post.link }}">{{ post.title }}</a>
+          {% else %}
+            <a class="post-link" href="{{ post.git-link }}">{{ post.title }}</a>
+          {% endif %}
         </h1>
         <span class="post-project">{{ post.description }}</span>
       </li>
