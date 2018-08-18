@@ -8,7 +8,7 @@ use_math: true
 
 Naive Bayes Classifier is a widely used classifier because of its simplicity and ease of implementation. We cannot disregard this classifier as being "naive" and cannot be used for complicated tasks. So, if this classifier is powerful enough what is so naive about it?
 
-It is naive because the classifier assumes that the attributes of the data are independent to each other. This might be true in some cases depending on the data we are dealing with.
+It is naive because the classifier assumes that the attributes of the data are independent to each other given the class labels. This might be true in some cases depending on the data we are dealing with.
 
 Let us choose a well known Titanic dataset(from here) and extract only the columns "Sex","Pclass","Fare" and labels "Survived" for  illustration. Here is a snippet of it.
 
