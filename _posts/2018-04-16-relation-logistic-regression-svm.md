@@ -24,21 +24,21 @@ Before going into what that `thing` is, we will first see what actually `learnin
 
 Let us define our data as follows (we will consider a supervised learning problem here),
 
-$$ {(\textbf{x_i}, \textbf{y_i}), ... ,(\textbf{x_n}, \textbf{y_n})\} $$
+$$ {(\mathbf{x_i}, \mathbf{y_i}), ... ,(\mathbf{x_n}, \mathbf{y_n})\} $$
 
-We want to learn a function that is mapping from input $$ \textbf{x_i} $$ to $$ \textbf{y_i} $$, such that we give out a reasonable prediction even
+We want to learn a function that is mapping from input $ \mathbf{x_i} $ to $ \mathbf{y_i} $, such that we give out a reasonable prediction even
 when a new datapoint - out of training set - is given to us. Formally, we want to find a function which does the following,
 
-$$ min_{f \in \mathcal{F}} \quad \mathcal{E}(f) ; \mathcal{E}(f) &= \mathbb{E}_{p_{(X,Y)}}\mathcal{L}(f(\textbf{x}), \textbf{y}) $$
+$$ min_{f \in \mathcal{F}} \quad \mathcal{E}(f) ; \mathcal{E}(f) = \mathbb{E}_{p_{(X,Y)}}\mathcal{L}(f(\mathbf{x}), \mathbf{y}) $$
 
-Let us break this equation down, $$ \mathcal{L}(.,.) $$ (otherwise known as loss function) is a measure of how good we are predicting $$ \hat{\textbf{y}} $$ when compared to the actual labels.
-When this `loss` is averaged over all datapoints of $$ (\textbf{x_i}, \textbf{y_i}) $$ weighted by their probabilities, we get the expected risk $$ \mathcal{E} $$. We
-want to find a function from a family of functions $$ \mathcal{F} $$ that minimizes the expected risk.
+Let us break this equation down, $ \mathcal{L}(.,.) $ (otherwise known as loss function) is a measure of how good we are predicting $ \hat{\mathbf{y}} $ when compared to the actual labels.
+When this `loss` is averaged over all datapoints of $ (\mathbf{x_i}, \mathbf{y_i}) $ weighted by their probabilities, we get the expected risk $ \mathcal{E} $. We
+want to find a function from a family of functions $ \mathcal{F} $ that minimizes the expected risk.
 
-But remember, we have access to only the datapoints from $$ p_{(X,Y) $$,
+But remember, we have access to only the datapoints from $ p_{(X,Y) $,
 so we approximate the above formulation by its empirical version as follows,
 
-$$ min_{f \in \mathcal{F}} \quad \hat{\mathcal{E}}(f); \hat{\mathcal{E}}(f) &= \sum_{i=1}^{n}\mathcal{L}(f(\textbf{x}), \textbf{y}) $$
+$$ min_{f \in \mathcal{F}} \quad \hat{\mathcal{E}}(f); \hat{\mathcal{E}}(f) = \sum_{i=1}^{n}\mathcal{L}(f(\mathbf{x}), \mathbf{y}) $$
 
 This is called as Empirical Risk Minimization. Therefore, to start learning from data we need to define two things,
 
@@ -46,8 +46,8 @@ This is called as Empirical Risk Minimization. Therefore, to start learning from
 * Loss function to determine how well we are doing given a function
 
 Coming back to the connection between Logistic regression and SVM, they both are flavours of ERM with space of functions being the same i.e linear (excluding kernel versions of Logistic regression
-and SVM) and they differ only by how they define their losses. Logistic regression uses logistic loss $$ \mathcal{L}_{logistic} &= ln(1 + exp(-\textbf{y}f(\textbf{x}))) $$ and 
-linear SVM uses hinge loss $$ \mathcal{L}_{SVM} &= [1 - \textbf{y}f(\textbf{x})]_{+} $$. They both can be considered as continuous approximations
+and SVM) and they differ only by how they define their losses. Logistic regression uses logistic loss $ \mathcal{L}_{logistic} = ln(1 + exp(-\mathbf{y}f(\mathbf{x}))) $ and 
+linear SVM uses hinge loss $ \mathcal{L}_{SVM} = [1 - \mathbf{y}f(\mathbf{x})]_{+} $. They both can be considered as continuous approximations
 of misclassification error.
 
 
