@@ -38,7 +38,7 @@ want to find a function from a family of functions $ \mathcal{F} $ that minimize
 But remember, we have access to only the datapoints from $ p_{(X,Y)} $,
 so we approximate the above formulation by its empirical version as follows,
 
-$$ min_{f \in \mathcal{F}} \quad \hat{\mathcal{E}}(f); \hat{\mathcal{E}}(f) = \sum_{i=1}^{n}\mathcal{L}(f(\mathbf{x}), \mathbf{y}) $$
+$$ min_{f \in \mathcal{F}} \quad \hat{\mathcal{E}}(f); \hat{\mathcal{E}}(f) = \sum_{i=1}^{n}\mathcal{L}(f(\mathbf{x_i}), \mathbf{y_i}) $$
 
 This is called as Empirical Risk Minimization. Therefore, to start learning from data we need to define two things,
 
