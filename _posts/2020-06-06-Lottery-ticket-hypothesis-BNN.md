@@ -38,6 +38,8 @@ I wanted to answer the question, can the variance of the posterior distribution 
 
 I trained a fully connected BNN of architecture 300-100-10 on MNIST. Once I get the initial and final parameters of the variational distribution of weights, I train two deterministic neural networks of the same model architecture with same set of hyperparameters, 1) Weights starting from the initial means of the bayesian neural network 2) Weights starting from the initial means of the bayesian neural network, but with weights greater than a certain threshold on variance of the final BNN masked. When these networks are trained till convergence, this is how they trained.
 
+![performance_diff](/assets/masked_unmasked_performance.png){:class="img-responsive"}
+
 [^1]: Jonathan Frankle  and  Michael  Carbin.  “The  lottery  ticket  hypothesis:  Finding  sparse,  trainable neural networks”. In:arXiv preprint arXiv:1803.03635(2018).
 [^2]: Hattie Zhou et al. “Deconstructing lottery tickets: Zeros, signs, and the supermask”. In:Advances in Neural Information Processing Systems. 2019, pp. 3597–3607.
 [^3]: Yeming Wen et al. “Flipout: Efficient pseudo-independent weight perturbations on mini-batches”.In:arXiv preprint arXiv:1803.04386(2018).
