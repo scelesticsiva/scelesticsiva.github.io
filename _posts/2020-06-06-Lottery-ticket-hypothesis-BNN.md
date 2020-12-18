@@ -8,6 +8,8 @@ use_math: true
 
 ### Introduction
 
+![distribution_of_weights](/assets/distribution_of_weights.png){:class="img-responsive"}
+
 Lottery ticket hypothesis [^1] talks about the existence of subnetworks in a large neural network that is responsible for the performance of the overparametrized neural network. When this subnetwork (called lottery ticket) is trained in isolation to the same number of epochs, it reaches the same accuracy (or sometimes higher accuracy) than the bigger network it was originally a part of. This gives a clue as to why do neural networks need to be overparametrized. The probability of finding these subnetworks increase exponentially with the size of the network and therefore the chance of finding one of these lucky subnetworks.
 
 The strategy used in the original paper to identify these subnetworks is to look at the absolute magnitude of the final weights of a trained bigger network. Certain top-k percentage of absolute weights at each layer are retained and therefore form the weights of the subnetwork. While there have been several schemes explored in _Deconstructing lottery tickets: Zeros, signs, and the supermask_ [^2]  to identify the winning tickets, I was particularly interested in using uncertainty to find these subnetworks. What would be really nice is to find these subnetworks during start of training thereby reducing significant computational overhead.
