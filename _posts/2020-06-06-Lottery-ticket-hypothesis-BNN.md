@@ -40,6 +40,8 @@ I trained a fully connected BNN of architecture 300-100-10 on MNIST. Once I get 
 
 ![performance_diff](/assets/masked_unmasked_performance.png){:class="img-responsive"}
 
+Find your own lottery tickets with BNN from this Colab notebook [link](https://colab.research.google.com/drive/17-dxAjFhfdeyyoBiKmlp_ZwxwhxI5-9r?usp=sharing)
+
 [^1]: Jonathan Frankle  and  Michael  Carbin.  “The  lottery  ticket  hypothesis:  Finding  sparse,  trainable neural networks”. In:arXiv preprint arXiv:1803.03635(2018).
 [^2]: Hattie Zhou et al. “Deconstructing lottery tickets: Zeros, signs, and the supermask”. In:Advances in Neural Information Processing Systems. 2019, pp. 3597–3607.
 [^3]: Yeming Wen et al. “Flipout: Efficient pseudo-independent weight perturbations on mini-batches”.In:arXiv preprint arXiv:1803.04386(2018).
