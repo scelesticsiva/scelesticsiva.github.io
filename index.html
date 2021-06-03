@@ -1,18 +1,167 @@
----
-layout: default
----
+<!DOCTYPE HTML>
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<div class="home">
-  <ul class="post-list">
-    {% for post in site.posts %}
-      {% if post.type == "post" %}
-      <li>
-        <h1>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h1>
-        <span class="post-meta">{{ post.date | date: "%B %d, %Y" }}</span>
-      </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-</div>
+  <title>Sivaramakrishnan Sankarapandian</title>
+  
+  <meta name="author" content="Sivaramakrishnan Sankarapandian">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+  <link rel="icon" type="image/png" href="images_altered/bu_symbol.png"> <!-- TODO: change the icon from UC berkeley to something else -->
+</head>
+
+<body>
+  <table style="width:100%;max-width:800px;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+    <tr style="padding:0px">
+      <td style="padding:0px">
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr style="padding:0px">
+            <td style="padding:2.5%;width:63%;vertical-align:middle">
+              <p style="text-align:center">
+                <name>Sivaramakrishnan Sankarapandian</name>
+              </p>
+              <p>I am working as a Senior Research Engineer for <a href="https://proscia.com/">Proscia</a> trying to come up with deep learning / machine learning solutions to diagnose cancer in histopathological images. 
+              </p>
+              <p>
+              	I completed my masters in Computer Engineering from Boston University advised by <a href="http://people.bu.edu/bkulis/">Brian Kulis</a>.
+                I am particularly interested in the field of applying bayesian principles to deep learning and its applications to medical domain. Papers on generative models (like GANs, VAEs, normalizing flows, autoregressive models), approximate inference, unsupervised representation learning and gazzillion of those self-supervised learning techniques interest me. I have a special liking for papers that connect seemingly disparate techniques in machine learning. I also have a soft spot for art created using AI. 
+
+				On my leisure time, I sketch, I listen to ambient music, recently I am into travel cinematic videos on Youtube. My favourites creators are, <a href="https://www.youtube.com/kraigadams">Kriag Adams</a> and <a href="https://www.youtube.com/channel/UCpLaU6vp4CUUHyhflWJie9A">Tim Kellner.</a>
+              </p>
+              <p style="text-align:center">
+                <a href="mailto:scelesticsiva@gmail.com">Email</a> &nbsp/&nbsp
+                <!-- <a href="data/JonBarron-CV.pdf">CV</a> &nbsp/&nbsp -->
+                <!-- <a href="data/JonBarron-bio.txt">Bio</a> &nbsp/&nbsp -->
+                <a href="https://scholar.google.com/citations?user=7z5tP4oAAAAJ&hl=en">Google Scholar</a> &nbsp/&nbsp
+                <a href="http://www.linkedin.com/in/siva2910">Linkedin</a> &nbsp/&nbsp
+                <a href="http://github.com/scelesticsiva">Github</a> &nbsp/&nbsp
+                <a href="blog/index.html">Blog</a>
+              </p>
+            </td>
+            <td style="padding:2.5%;width:40%;max-width:40%">
+              <a href="images_altered/Siva_pic.jpeg"><img style="width:100%;max-width:100%" alt="profile photo" src="images_altered/Siva_circle.png" class="hoverZoomLink"></a>
+            </td>
+          </tr>
+        </tbody></table>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+            <tr>
+            <td style="padding:20px;width:100%;vertical-align:middle">
+              <heading>Research</heading>
+              <p>
+                Some of my research works are highlighted below.
+              </p>
+            </td>
+          </tr>
+        </tbody></table>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+
+        	<!-- Beta VAEs -->
+        	<tr>
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <img src="images_altered/beta_VAE_for_glitches.png" alt="clean-usnob" width="212" height="160">
+            </td>
+            <td width="75%" valign="middle">
+              <a href="https://ml4physicalsciences.github.io/2020/files/NeurIPS_ML4PS_2020_133.pdf">
+                <papertitle>Beta-Annealed Variational Autoencoders for Glitches</papertitle>
+              </a>
+              <br>
+              <strong>Sivaramakrishnan Sankarapandian</strong>, <a href="http://people.bu.edu/bkulis/">Brian Kulis</a>
+              <br>
+              <em>NeurIPS workshop on Machine Learning and Physical Sciences</em>, 2020
+              <p>We propose an annealing schedule for beta in beta-VAEs inspired by the connection between beta-VAEs and Bottleneck-VAEs</a></p>
+            </td>
+          </tr>
+
+          <!-- Dermv1 Nature SR paper -->
+          <tr>
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <img src="images_altered/nature_SR_paper.png" alt="clean-usnob" width="180" height="160">
+            </td>
+            <td width="75%" valign="middle">
+              <a href="https://www.nature.com/articles/s41598-020-59985-2">
+                <papertitle>Tailored for Real-World: A Whole Slide Image Classification System Validated on Uncurated Multi-Site Data Emulating the Prospective Pathology Workload</papertitle>
+              </a>
+              <br>
+              Julianna D. Ianni,
+              Rajath E. Soans,
+              <strong>Sivaramakrishnan Sankarapandian</strong>,
+              Ramachandra Vikas Chamarthi,
+              Devi Ayyagari
+              <i>et.al</i>
+              <br>
+              <em>Nature Scientific Reports</em>, 2020
+              <p>We show results of a deep learning system that can triage histo images of skin lesions into four clinically relevant categories</a></p>
+            </td>
+          </tr>
+
+          <!-- Learning compact networks -->
+          <tr>
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <img src="images_altered/adaptive_network_regulariation.png" alt="clean-usnob" width="212" height="160">
+            </td>
+            <td width="75%" valign="middle">
+              <a href="https://openreview.net/forum?id=r1zhBZrtoX">
+                <papertitle>Learning Compact Networks via Adaptive Network Regularization</papertitle>
+              </a>
+              <br>
+              <strong>Sivaramakrishnan Sankarapandian</strong>, Anil Kag, Rachel Manzelli, <a href="http://people.bu.edu/bkulis/">Brian Kulis</a>
+              <br>
+              <em>NeurIPS workshop on Compact Deep Neural Network Representation with Industrial Applications</em>, 2018
+              <p>We present results on a simple regularizer that penalizes the number of hidden units per layer, designed to encourage compactness and flexibility of the network architecture. We motivate
+              this algorithm by applying Small Variance Asymptotics on Bayesian Neural Networks</a></p>
+            </td>
+          </tr>
+
+          <!-- Image compression using deep learning -->
+          <tr>
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <img src="images_altered/image_compression_using_deep_learning.png" alt="clean-usnob" width="250" height="160">
+            </td>
+            <td width="75%" valign="middle">
+              <a href="https://scelesticsiva.github.io/assets/image_compression_report.pdf">
+                <papertitle>Image Compression using Deep Learning</papertitle>
+              </a>
+              <br>
+              H. Kubra Cilingir,
+              <strong>Sivaramakrishnan Sankarapandian</strong>, M. Ozan Tezcan
+              <br>
+              <!-- <em>NeurIPS workshop on Compact Deep Neural Network Representation with Industrial Applications</em>, 2018 -->
+              <p>We present results on using feed forward network, autoencoders, recurrent convolutional autoencoders, Generative Adversarial Networks( (GANs) for lossy and lossless image compression</a></p>
+            </td>
+          </tr>
+
+          <!-- Novel hybrid MPPT algorithm -->
+          <tr>
+            <td style="padding:20px;width:25%;vertical-align:middle">
+              <img src="images_altered/hybrid_MPPT.png" alt="clean-usnob" width="212" height="160">
+            </td>
+            <td width="75%" valign="middle">
+              <a href="https://ieeexplore.ieee.org/document/7411257">
+                <papertitle>A novel hybrid MPPT algorithm using linear Extrapolation</papertitle>
+              </a>
+              <br>
+              <strong>Sivaramakrishnan Sankarapandian</strong>
+              <br>
+              <em>International Conference on Computing and Network Communications (CoCoNet)</em>, 2015
+              <p>We present a new hybrid Maximum Power Point Tracking algorithm for drawing maximum power from a Photovoltaic Module</a></p>
+            </td>
+          </tr>
+
+          
+        </tbody></table>
+        <table style="width:100%;border:0px;border-spacing:0px;border-collapse:separate;margin-right:auto;margin-left:auto;"><tbody>
+          <tr>
+            <td style="padding:0px">
+              <br>
+              <p style="text-align:right;font-size:small;">
+                Thanks to <a href="https://jonbarron.info/">Jon Barron</a>.
+              </p>
+            </td>
+          </tr>
+        </tbody></table>
+      </td>
+    </tr>
+  </table>
+</body>
+
+</html>
